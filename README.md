@@ -1,63 +1,102 @@
-# Hi there 👋 I'm Erik Svilich
+# Erik Svilich - Founder & CEO, Encypher
 
-Founder & CEO here at EncypherAI, focused on building trust and transparency in the age of AI-generated content.
+**Publishers lose attribution the moment their text is ingested by an AI.** Encypher solves that - cryptographic provenance, embedded invisibly in the text itself, that survives copy-paste, wire services, and aggregators.
+
+Co-Chair, C2PA Text Provenance Task Force &nbsp;·&nbsp; Patent Pending &nbsp;·&nbsp; Open Source Core
+
+---
+
+## The Problem
+
+When AI systems train on or reproduce publisher content, the original author and outlet disappear. There is no technical mechanism to prove origin after the fact - no metadata survives copy-paste, no EXIF equivalent exists for text. The result is willful infringement at scale, with publishers unable to detect it, quantify it, or enforce against it.
+
+EncypherAI embeds a cryptographically signed, invisible payload directly into Unicode characters. The signature travels with the text, no matter where it ends up.
 
 ---
 
-### 🔭 I’m Currently Working On:
+## Ecosystem
 
-Building **[EncypherAI](https://github.com/encypherai/encypher-ai)**!
-
-* **What it is:** An open-source Python library designed to embed verifiable metadata directly into AI-generated text using Unicode variation selectors and cryptographic signatures.
-* **The Goal:** To establish an open standard for AI content provenance, moving beyond unreliable detection methods and ensuring authenticity without impacting readability. We aim to provide developers and platforms with the tools needed for responsible AI deployment.
-* **Key Tech:** Python, FastAPI, Next.js, Google Cloud Run, Railway, Cryptography (Digital Signatures), Unicode Standards.
-
-I'm actively developing the core library, building out cloud infrastructure for verification services, engaging with potential partners, and navigating the pre-seed fundraising process.
-
-### 🌱 I’m Currently Learning More About:
-
-* Advanced applications of cryptography for data integrity and provenance.
-* Best practices for building and scaling Commercial Open-Source Software (COSS) businesses (inspired by models like MongoDB).
-* Strategies for fostering vibrant and sustainable open-source communities.
-* Integrating seamlessly with diverse LLM APIs and platforms (OpenAI, Gemini, Claude, etc.).
-* The evolving landscape of AI ethics, policy (like the EU AI Act), and content authenticity standards (like C2PA).
-
-### 👯 I’m Looking To Collaborate On:
-
-* **[EncypherAI](https://github.com/encypherai/encypher-ai):** Contributions, feedback, and ideas are always welcome! Check out our contributing guidelines.
-* **Integrations:** Building integrations or plugins for EncypherAI within other developer tools, LLM frameworks (like LangChain, LlamaIndex), or content platforms.
-* **Research & Standards:** Projects related to AI content provenance, digital trust, AI ethics, and the development of open standards in the AI space.
-* Exploring novel applications for verifiable metadata.
-
-### 🤔 I’m Looking For Help With:
-
-* **Feedback:** Insights and constructive criticism on EncypherAI's approach, usability, and documentation from developers and potential users.
-* **Community Building:** Tips and best practices for growing an active, engaged open-source community around developer tools.
-* **Partnerships:** Connections to LLM providers, content platforms, educational institutions, or other organizations interested in implementing verifiable AI content provenance.
-
-### 💬 Ask Me About:
-
-* EncypherAI and verifiable AI content provenance.
-* Using Unicode for embedding metadata in text.
-* Python development (FastAPI, backend systems, library design).
-* Building full-stack applications (especially with Next.js).
-* The challenges and limitations of current AI detection tools.
-* Open-source strategy and dual-licensing models (AGPL + Commercial).
-* Bootstrapping tech projects and micro-SaaS.
-* AI ethics and responsible technology development.
-
-### 📫 How To Reach Me:
-
-* **LinkedIn:** [linkedin.com/in/eriksvilich](https://www.linkedin.com/in/eriksvilich/)
-* **EncypherAI Website:** [encypherai.com](https://encypherai.com/)
-* **EncypherAI Issues:** [github.com/encypherai/encypher-ai/issues](https://github.com/encypherai/encypher-ai/issues) (for project-specific questions/feedback)
-
-### 😄 Pronouns:
-
-* He/Him
-
-### ⚡ Fun Fact:
-
-* I built the full stack for EncypherAI's core platform and website frontend/backend myself and for a few other SaaS platforms! Also a former FIRST robotics enthusiast & Eagle Scout.
+```mermaid
+graph TD
+    A["c2pa-org/c2pa-spec<br/>Open Standard"] -->|implements| B["encypherai/c2pa-text<br/>Reference Implementation<br/>Python · Go · Rust · TypeScript · AGPL-3.0"]
+    B -->|Python core| C["encypherai/encypher-ai<br/>Python Library · PyPI<br/>Unicode variation selector signing"]
+    C -->|powers| D["Private Commercial Suite<br/>Enterprise API · Dashboard<br/>WordPress · Chrome · Office SDKs"]
+```
 
 ---
+
+## Product Tiers
+
+```mermaid
+graph TD
+    OSS["Open Source - AGPL-3.0<br/>Anyone can implement the standard"]
+    API["Free Hosted API<br/>Zero friction adoption"]
+    COM["Commercial - Private<br/>Attribution analytics<br/>Formal notice generation<br/>Evidence packages · Batch ops<br/>SSO · Revocation"]
+
+    OSS -->|"everyone implements the standard"| API
+    API -->|"enforcement requires"| COM
+```
+
+---
+
+## Quick Start
+
+```python
+from encypher.core.unicode_metadata import UnicodeMetadata
+
+# Embed verifiable provenance into any AI-generated text
+signed_text = UnicodeMetadata.embed_metadata(text, private_key, payload)
+
+# Verify - survives copy-paste, wire services, and aggregators
+result = UnicodeMetadata.verify_text(signed_text, public_key)
+# -> {'verified': True, 'payload': {...}, 'timestamp': '...'}
+```
+
+```bash
+uv add encypher-ai
+# or
+pip install encypher-ai
+```
+
+---
+
+## Why Now
+
+Regulatory frameworks around AI transparency are advancing globally, with major jurisdictions now requiring disclosure of AI-generated or AI-manipulated content. The C2PA standard - the technical backbone EncypherAI implements - has been adopted by leading AI platforms, browser vendors, and camera manufacturers. Publishers and media organizations are actively looking for a standards-compliant way to assert and track provenance.
+
+---
+
+## Who This Is For
+
+**Developers** - Drop-in provenance for any text pipeline. [`pip install encypher-ai`](https://pypi.org/project/encypher-ai/) · [Open an issue](https://github.com/encypherai/encypher-ai/issues)
+
+**Publishers & Platforms** - If you're evaluating text provenance at the enterprise level, reach out on [LinkedIn](https://linkedin.com/in/eriksvilich).
+
+**Researchers & Standards Contributors** - The reference implementation lives at [encypherai/c2pa-text](https://github.com/encypherai/c2pa-text). C2PA spec work happens at [c2pa-org/c2pa-spec](https://github.com/c2pa-org/c2pa-spec).
+
+---
+
+## Stack
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
+![Go](https://img.shields.io/badge/Go-00ADD8?style=flat&logo=go&logoColor=white)
+![Rust](https://img.shields.io/badge/Rust-000000?style=flat&logo=rust&logoColor=white)
+![GCP](https://img.shields.io/badge/GCP-4285F4?style=flat&logo=googlecloud&logoColor=white)
+![Railway](https://img.shields.io/badge/Railway-0B0D0E?style=flat&logo=railway&logoColor=white)
+
+---
+
+## Connect
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Erik_Svilich-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/eriksvilich)
+[![Website](https://img.shields.io/badge/Website-encypherai.com-000000?style=flat&logo=googlechrome&logoColor=white)](https://encypherai.com)
+[![GitHub](https://img.shields.io/badge/GitHub-eriksvilich-181717?style=flat&logo=github&logoColor=white)](https://github.com/eriksvilich)
+
+---
+
+## A Few Things About Me
+
+Solo builder - I've written every line of the Encypher stack, from cryptographic core to commercial dashboard. Eagle Scout. FIRST Robotics alumnus. I think a lot about open-source sustainability, standards governance, and what it means to build infrastructure that the internet actually trusts.
